@@ -2,7 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  server '18.117.139.196', user: 'deploy', roles: %w{app db web}
 
   # Code is not reloaded between requests.
   config.cache_classes = true
