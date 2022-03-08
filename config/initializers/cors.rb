@@ -3,7 +3,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       if Rails.env.development?
         origins 'http://localhost:3000'
       else
-        origins 'https://aqueous-dawn-46734.herokuapp.com'
+        origins 'https://quirky-lewin-72018a.netlify.app/'
       end
       resource '*', headers: :any, methods: [:get, :post, :put, :delete]
     end
