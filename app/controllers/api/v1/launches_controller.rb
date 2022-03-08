@@ -2,7 +2,7 @@ class Api::V1::LaunchesController < ApplicationController
 
      # GET /launches
      def index
-        @launches = Launch.all
+        @launches = Launch.active_launches
         render json: @launches, except: [:form_data]
     end
 
