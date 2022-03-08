@@ -1,4 +1,5 @@
 class Api::V1::CollectionsController < ApplicationController
+    skip_before_action :authenticate_request, only: [:index, :show, :create]
 
     # GET /collections
     def index
@@ -44,6 +45,11 @@ class Api::V1::CollectionsController < ApplicationController
           render json: {error: 'Unable to delete collection'}, status: 400
         end                
     end
+
+    def get_admin_collections_info
+        @collections = Collection.all
+        render json: @collections
+    end 
 
     private
 
