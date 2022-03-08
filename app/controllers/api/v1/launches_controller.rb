@@ -3,7 +3,7 @@ class Api::V1::LaunchesController < ApplicationController
      # GET /launches
      def index
         @launches = Launch.active_launches
-        render json: @launches
+        render json: @launches, except: [:form_data]
     end
 
     # GET /launches/:id
@@ -15,7 +15,7 @@ class Api::V1::LaunchesController < ApplicationController
     # POST /launches 
     def create 
         @launch = Launch.new(launch_params)
-        @launch.active = true;
+        @launch.active = false;
         if @launch.save
             render json: @launch
         else 
