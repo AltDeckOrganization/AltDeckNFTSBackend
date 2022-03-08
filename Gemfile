@@ -33,6 +33,12 @@ gem 'rack-cors'
 # postgress gem
 gem "pg"
 
+# Capistrano
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
