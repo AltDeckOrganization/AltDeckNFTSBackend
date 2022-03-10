@@ -1,7 +1,8 @@
 class Api::V1::LaunchesController < ApplicationController
+    skip_before_action :authenticate_request, only: [:index, :show, :create]
 
      # GET /launches
-     def index
+    def index
         @launches = Launch.active_launches
         render json: @launches, except: [:form_data]
     end
@@ -45,9 +46,14 @@ class Api::V1::LaunchesController < ApplicationController
         end                
     end
 
+    def get_admin_launches_info
+        @launches = Launch.all
+        render json: @launches
+    end 
+
     private
 
-    def launch_params
-        params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id)
-    end
+        def launch_params
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id)
+        end
 end

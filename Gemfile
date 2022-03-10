@@ -36,6 +36,12 @@ gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
 
+# Use Json Web Token(JWT) for token based authentication
+gem 'jwt'
+
+# Use ActiveModel has_secure_password
+gem  'bcrypt'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

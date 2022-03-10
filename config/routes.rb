@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :collections
       resources :launches
+      resources :users
+      post '/auth/login', to: 'authentication#login'
+      get '/admin_launch_details', to: 'launches#get_admin_launches_info'
+      get '/admin_collection_details', to: 'collections#get_admin_collections_info'
     end
   end
 end
