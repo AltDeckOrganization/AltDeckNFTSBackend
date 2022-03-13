@@ -4,7 +4,7 @@ class Api::V1::LaunchesController < ApplicationController
      # GET /launches
     def index
         @launches = Launch.active_launches
-        render json: @launches, except: [:form_data]
+        render json: @launches, except: [:form_data, :profile_image_path, :collection_image_path]
     end
 
     # GET /launches/:id
@@ -48,7 +48,7 @@ class Api::V1::LaunchesController < ApplicationController
 
     def get_admin_launches_info
         @launches = Launch.all
-        render json: @launches
+        render json: @launches, except: [:profile_image_path, :collection_image_path]
     end 
 
     private
