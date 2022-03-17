@@ -28,7 +28,7 @@ class Api::V1::LaunchesController < ApplicationController
     def update
         @launch = Launch.find(params[:id])
         if @launch
-            @launch.update(launch_params)
+            @launch.update(admin_launch_params)
             render json: {message: 'Launch successfully updated' }, status: 200
         else
             render json: {error: 'Unable to update Launch.'}, status: 400
@@ -54,6 +54,10 @@ class Api::V1::LaunchesController < ApplicationController
     private
 
         def launch_params
-            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id)
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data)
+        end
+
+        def admin_launch_params 
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :page_data)
         end
 end
