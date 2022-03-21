@@ -19,11 +19,11 @@ launch2 = Launch.create(name: "X-Men Wallpaper", profile_image_path: "/g/h/i",
       
 
 # Launchpad statistics
-stats = LaunchpadStatistic.create(launch_id: launch, whitelist_mint_settings: "[a, b, c, d]",
+stats = LaunchpadStatistic.create(launch: launch, whitelist_mint_settings: "[a, b, c, d]",
   mint_price: 34, mint_currency: 345.50)
 
-stats1 = LaunchpadStatistic.create(launch_id: launch1, whitelist_mint_settings: "[e, f, g, h]",
+stats1 = LaunchpadStatistic.create(launch: launch1, whitelist_mint_settings: "[e, f, g, h]",
   mint_price: 44, mint_currency: 647.50555)
 
-stats2 = LaunchpadStatistic.create(launch_id: launch2, whitelist_mint_settings: "[i, j, k, l]",
+stats2 = LaunchpadStatistic.create(launch: launch2, whitelist_mint_settings: "[i, j, k, l]",
     mint_price: 76, mint_currency: 896.4345)
