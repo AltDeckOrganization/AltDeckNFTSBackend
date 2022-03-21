@@ -1,5 +1,5 @@
 class Api::V1::LaunchesController < ApplicationController
-    skip_before_action :authenticate_request, only: [:index, :show, :create]
+    # skip_before_action :authenticate_request, only: [:index, :show, :create]
 
      # GET /launches
     def index
