@@ -1,4 +1,4 @@
-class Api::V1::LaunchpadStatistics < ApplicationController
+class Api::V1::LaunchpadStatisticsController < ApplicationController
 
   # GET /launchpad_statistics
   def index
@@ -39,9 +39,10 @@ class Api::V1::LaunchpadStatistics < ApplicationController
     @statistic = LaunchpadStatistic.find(params[:id])
     if @statistic
       @statistic.destroy
-      render json: {message: 'Statistics successfully deleted'}, status: 200
+      render json: {message: 'Statistics successfully deleted!'}, status: 200
     else
       render json: {error: 'Unable to delete statistics'}, status: 400
+    end
   end
 
   private
