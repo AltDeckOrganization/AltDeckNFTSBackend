@@ -3,13 +3,13 @@ class Api::V1::LaunchpadStatisticsController < ApplicationController
   # GET /launchpad_statistics
   def index
     @statistics = LaunchpadStatistic.all
-    render json: {data: @statistics}, status: 200
+    render json: @statistics, status: :ok
   end
 
   # GET /launchpad_statistics/:id
   def show
     @statistic = LaunchpadStatistic.find(params[:id])
-    render json: {data: @statistic}, status: 200
+    render json: @statistic, status: :ok
   end
 
   # POST /launchpad_statistics
