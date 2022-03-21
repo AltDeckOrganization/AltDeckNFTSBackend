@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_08_175144) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_21_112657) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "profile_image_path"
@@ -32,6 +32,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_175144) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "launchpad_statistics", force: :cascade do |t|
+    t.integer "launch_id", null: false
+    t.text "whitelist_mint_settings"
+    t.integer "mint_price"
+    t.decimal "mint_currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["launch_id"], name: "index_launchpad_statistics_on_launch_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -41,4 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_175144) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "launchpad_statistics", "launches"
 end
