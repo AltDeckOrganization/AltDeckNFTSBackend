@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_21_112657) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "profile_image_path"
@@ -27,9 +27,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_112657) do
     t.text "collection_image_path"
     t.text "form_data"
     t.string "candymachine_id"
-    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
   end
 
   create_table "launchpad_statistics", force: :cascade do |t|
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_112657) do
     t.decimal "mint_currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "altdeck_revenue"
+    t.string "total_revenue_generated"
     t.index ["launch_id"], name: "index_launchpad_statistics_on_launch_id"
   end
 

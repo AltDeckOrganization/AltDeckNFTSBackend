@@ -45,9 +45,25 @@ class Api::V1::LaunchpadStatisticsController < ApplicationController
     end
   end
 
+  # Update Altdeck revenue and total revenue generated
+  # PUT /admin_launchpad_revenue/:id
+  def launchpad_revenue
+    @revenue = LaunchpadStatistic.find(params[:id])
+    if @revenue
+      @revenue.update(revenue_params)
+      render json: {message: 'revenue successfully updated!'}, status: 200
+    else
+      render error: {error: "Unable to create revenue"}, status: 400
+    end
+  end
+
   private
 
   def statistics_params
     params.permit(:launch_id, :whitelist_mint_settings, :mint_price, :mint_currency)
+  end
+
+  def revenue_params
+    params.permit(:altdeck_revenue, :total_revenue_generated)
   end
 end
