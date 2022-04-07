@@ -28,7 +28,7 @@ class Api::V1::LaunchesController < ApplicationController
     def update
         @launch = Launch.find(params[:id])
         if @launch
-            @launch.update(launch_params)
+            @launch.update(admin_launch_params)
             render json: {message: 'Launch successfully updated' }, status: 200
         else
             render json: {error: 'Unable to update Launch.'}, status: 400
@@ -48,7 +48,7 @@ class Api::V1::LaunchesController < ApplicationController
 
     def get_admin_launches_info
         @launches = Launch.all
-        render json: @launches
+        render json: @launches, except: [:profile_image_path, :collection_image_path]
     end 
 
     # Change launch status

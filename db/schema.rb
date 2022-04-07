@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
@@ -42,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
     t.string "altdeck_revenue"
     t.string "total_revenue_generated"
     t.index ["launch_id"], name: "index_launchpad_statistics_on_launch_id"
+    t.text "page_data"
   end
 
   create_table "users", force: :cascade do |t|
