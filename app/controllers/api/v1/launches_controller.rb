@@ -62,11 +62,6 @@ class Api::V1::LaunchesController < ApplicationController
         end
     end
 
-    # Altdeck revenue and total revenue generated
-    def revenue
-        
-    end
-
     private
 
         def launch_params
