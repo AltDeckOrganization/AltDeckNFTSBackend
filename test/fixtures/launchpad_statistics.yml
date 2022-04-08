@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  launch: one
+  whitelist_mint_settings: MyText
+  mint_price: 1
+  mint_currency: 9.99
+
+two:
+  launch: two
+  whitelist_mint_settings: MyText
+  mint_price: 1
+  mint_currency: 9.99

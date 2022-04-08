@@ -3,8 +3,8 @@ class Api::V1::LaunchesController < ApplicationController
 
      # GET /launches
     def index
-        @launches = Launch.active_launches
-        render json: @launches, except: [:form_data, :profile_image_path, :collection_image_path]
+        @launches = Launch.all.where(status: :active)
+        render json: @launches, except: [:form_data]
     end
 
     # GET /launches/:id
@@ -51,13 +51,24 @@ class Api::V1::LaunchesController < ApplicationController
         render json: @launches, except: [:profile_image_path, :collection_image_path]
     end 
 
+    # Change launch status
+    def change_launch_status
+        @launch = Launch.find(params[:id])
+        if @launch
+            @launch.update(status_params)
+            render json: {message: 'Launch status successfully updated' }, status: 200
+        else
+            render json: {error: 'Unable to update Launch status'}, status: 400
+        end
+    end
+
     private
 
         def launch_params
-            params.permit(:name, :profile_image_path, :collection_image_path, :form_data)
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :status)
         end
 
-        def admin_launch_params 
-            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :page_data)
+        def status_params
+            params.permit(:status)
         end
 end
