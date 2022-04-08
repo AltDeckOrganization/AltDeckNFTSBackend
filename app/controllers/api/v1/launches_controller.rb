@@ -16,7 +16,7 @@ class Api::V1::LaunchesController < ApplicationController
     # POST /launches 
     def create 
         @launch = Launch.new(launch_params)
-        @launch.active = false;
+        @launch.status = :disabled;
         if @launch.save
             render json: @launch
         else 
