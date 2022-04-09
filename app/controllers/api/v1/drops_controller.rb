@@ -16,7 +16,7 @@ class Api::V1::DropsController < ApplicationController
     # POST /drops 
     def create 
         @drop = Drop.new(drop_params)
-        @drop.status = :disabled;
+        @drop.status = :pending;
         if @drop.save
             render json: @drop
         else 
@@ -49,6 +49,17 @@ class Api::V1::DropsController < ApplicationController
     def get_admin_drops_info
         @drops = Drop.all
         render json: @drops, except: [:profile_image_path]
+    end
+
+    # Change launch status
+    def change_drop_status
+        @drop = Drop.find(params[:id])
+        if @drop
+            @drop.update(status_params)
+            render json: {message: 'Drop status successfully updated' }, status: 200
+        else
+            render json: {error: 'Unable to update Drop status'}, status: 400
+        end
     end
 
     private
