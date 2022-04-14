@@ -1,10 +1,19 @@
 class Api::V1::LaunchesController < ApplicationController
     skip_before_action :authenticate_request, only: [:index, :show, :create]
+    LaunchResponse = Struct.new('LaunchResponse',:image, :name, :price, :tokens, :date, :filled, :status, :link)
 
      # GET /launches
     def index
-        @launches = Launch.all.where(status: :active)
-        render json: @launches, except: [:form_data]
+        @launches = Launch.all
+        launchResponses = [];
+        
+        for launch in @launches do
+           form_info = JSON.parse launch.form_data
+           col_data = LaunchResponse.new(launch.profile_image_path, launch.name, form_info['social_info']['mintPrice'], form_info['social_info']['supplyCount'], form_info['social_info']['mintDate'], form_info['social_info']['mintTime'], launch.status, "mintpage/" + launch.id.to_s)
+           launchResponses.push(col_data)
+        end
+
+        render json: launchResponses
     end
 
     # GET /launches/:id
@@ -65,10 +74,14 @@ class Api::V1::LaunchesController < ApplicationController
     private
 
         def launch_params
-            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :status)
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data)
         end
 
         def status_params
             params.permit(:status)
+        end
+
+        def admin_launch_params 
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :page_data)
         end
 end
