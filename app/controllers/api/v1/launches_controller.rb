@@ -19,7 +19,7 @@ class Api::V1::LaunchesController < ApplicationController
     # GET /launches/:id
     def show 
         @launch = Launch.find(params[:id])
-        render json: @launch
+        render json: @launch, except: [:collection_image_path]
     end
 
     # POST /launches 
