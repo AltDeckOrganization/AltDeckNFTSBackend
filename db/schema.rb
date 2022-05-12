@@ -10,8 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema[7.0].define(version: 2022_05_11_225022) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "token_id", null: false
+    t.index ["token_id"], name: "index_categories_on_token_id"
+  end
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "profile_image_path"
@@ -31,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+    t.text "page_data"
   end
 
   create_table "launchpad_statistics", force: :cascade do |t|
@@ -43,7 +51,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
     t.string "altdeck_revenue"
     t.string "total_revenue_generated"
     t.index ["launch_id"], name: "index_launchpad_statistics_on_launch_id"
-    t.text "page_data"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date_created", precision: nil
+    t.datetime "date_updated", precision: nil
+    t.datetime "date_deleted", precision: nil
+    t.string "blockchain"
+    t.integer "votes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_220320) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "wallet_address"
+    t.datetime "vote_date", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "token_id", null: false
+    t.index ["token_id"], name: "index_votes_on_token_id"
+  end
+
+  add_foreign_key "categories", "tokens"
   add_foreign_key "launchpad_statistics", "launches"
+  add_foreign_key "votes", "tokens"
 end

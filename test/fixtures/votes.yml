@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wallet_address: MyString
+  vote_date: 2022-05-11 22:47:01
+
+two:
+  wallet_address: MyString
+  vote_date: 2022-05-11 22:47:01
