@@ -48,9 +48,9 @@ token2 = Token.create(name: "Rails", date_created: "2020 Mar 03 05:12:41.211 PDT
     blockchain: "https://solana.xyz", votes: 4)
 
 # Votes
-vote = Vote.create(wallet_address: "0x0000001234d", vote_date: "2020 Mar 10 05:12:41.211 PDT", token: token)
-vote1 = Vote.create(wallet_address: "0x0000023cdf3", vote_date: "2021 April 11 05:12:41.211 PDT", token: token1)
-vote1 = Vote.create(wallet_address: "0x0000011cdfe", vote_date: "2022 May 11 05:12:41.211 PDT", token: token2)
+vote = Vote.create(vote_date: "2020 Mar 10 05:12:41.211 PDT", token: token)
+vote1 = Vote.create(vote_date: "2021 April 11 05:12:41.211 PDT", token: token1)
+vote1 = Vote.create(vote_date: "2022 May 11 05:12:41.211 PDT", token: token2)
 
 # Category
 category = Category.create(name: "category 1", token: token)

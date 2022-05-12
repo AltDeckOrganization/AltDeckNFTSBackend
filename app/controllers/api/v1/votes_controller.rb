@@ -38,6 +38,6 @@ class Api::V1::VotesController < ApplicationController
 
   private 
       def vote_params
-          params.permit(:wallet_address, :vote_date)
+          params.permit(:vote_date)
       end 
 end
