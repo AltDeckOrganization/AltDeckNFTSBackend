@@ -19,6 +19,10 @@
 
 # launch3 = Launch.create(name: "Merlin Wallpaper", profile_image_path: "/m/h/i",
 #   form_data: 'Here comes..', candymachine_id: "ijkl", status: :pending,)
+
+# launch3 = Launch.create(name: "Merlin Wallpaper", profile_image_path: "/m/h/i",
+#   form_data: 'Here comes..', candymachine_id: "ijkl", status: :pending,)
+
       
 
 # Launchpad statistics
@@ -57,4 +61,3 @@ category = Category.create(name: "category 1", token: token)
 category1 = Category.create(name: "category 2", token: token1)
 category2 = Category.create(name: "category 3", token: token2)
 
-  

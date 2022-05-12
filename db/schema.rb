@@ -19,12 +19,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_120159) do
     t.index ["token_id"], name: "index_categories_on_token_id"
   end
 
+ActiveRecord::Schema[7.0].define(version: 2022_04_08_002721) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "profile_image_path"
     t.text "collection_image_path"
     t.text "form_data"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drops", force: :cascade do |t|
+    t.string "name"
+    t.text "form_data"
+    t.text "profile_image_path"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +49,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_120159) do
     t.datetime "updated_at", null: false
     t.integer "status"
     t.text "page_data"
+    t.integer "status"
+  end
+
+  create_table "launchpad_statistics", force: :cascade do |t|
+    t.integer "launch_id", null: false
+    t.text "whitelist_mint_settings"
+    t.integer "mint_price"
+    t.decimal "mint_currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "altdeck_revenue"
+    t.string "total_revenue_generated"
+    t.index ["launch_id"], name: "index_launchpad_statistics_on_launch_id"
   end
 
   create_table "launchpad_statistics", force: :cascade do |t|
@@ -84,4 +107,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_120159) do
   add_foreign_key "categories", "tokens"
   add_foreign_key "launchpad_statistics", "launches"
   add_foreign_key "votes", "tokens"
+  add_foreign_key "launchpad_statistics", "launches"
 end
