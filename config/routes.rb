@@ -7,8 +7,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :collections
       resources :launches
+      resources :tokens
+      resources :votes
+      resources :categories
       resources :users
       resources :launchpad_statistics
+      post '/auth/login', to: 'authentication#login'
+      post '/admin_change_launch_status/:id', to: 'launches#change_launch_status'
       resources :drops
       post '/auth/login', to: 'authentication#login'
       post '/admin_change_launch_status/:id', to: 'launches#change_launch_status'

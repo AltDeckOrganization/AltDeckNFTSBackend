@@ -4,6 +4,8 @@ class Api::V1::LaunchesController < ApplicationController
 
      # GET /launches
     def index
+        @launches = Launch.all.where(status: :active)
+        render json: @launches, except: [:form_data]
         @launches = Launch.all
         launchResponses = [];
         
@@ -74,7 +76,7 @@ class Api::V1::LaunchesController < ApplicationController
     private
 
         def launch_params
-            params.permit(:name, :profile_image_path, :collection_image_path, :form_data)
+            params.permit(:name, :profile_image_path, :collection_image_path, :form_data, :candymachine_id, :status)
         end
 
         def status_params
