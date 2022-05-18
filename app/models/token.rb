@@ -1,5 +1,6 @@
 class Token < ApplicationRecord
-  has_many :vote
+  enum status: [:new, :active, :disabled ]
+
   has_many :category
 
   validates :name, presence: true
