@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :collections
       resources :launches
       resources :tokens
-      resources :votes
       resources :categories
       resources :users
       resources :launchpad_statistics
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
       get '/admin_launch_details', to: 'launches#get_admin_launches_info'
       get '/admin_drop_details', to: 'drops#get_admin_drops_info'
       get '/admin_collection_details', to: 'collections#get_admin_collections_info'
+      put '/tokens/vote', to: 'tokens#vote_for_token'
     end
   end
 end
