@@ -1,5 +1,5 @@
 class Api::V1::TokensController < ApplicationController
-  skip_before_action :authenticate_request, only: [:index, :show, :create]
+#   skip_before_action :authenticate_request, only: [:index, :show, :create]
 
   # GET /tokens
   def index 
@@ -48,12 +48,29 @@ class Api::V1::TokensController < ApplicationController
         render json: { errors: @token.errors.full_messages },
         status: :unprocessable_entity
     end
+  end
 
+
+  # Add new token
+  def add_new_token
+    @token = Token.new(data_params)
+    @token.status = :new;
+    
+    if @token.save
+        render json: @token, status: :created
+    else
+        render json: { errors: @token.errors.full_messages },
+        status: :unprocessable_entity
+    end
   end
 
   private 
       def token_params
           params.permit(:name, :date_created, :date_updated, :date_deleted, :blockchain)
       end
+
+      def data_params
+        params.permit(:token_detail)
+    end
   
 end

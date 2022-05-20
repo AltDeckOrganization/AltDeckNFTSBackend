@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get '/admin_drop_details', to: 'drops#get_admin_drops_info'
       get '/admin_collection_details', to: 'collections#get_admin_collections_info'
       put '/tokens/vote', to: 'tokens#vote_for_token'
+      post '/add_token', to: 'tokens#add_new_token'
     end
   end
 end
