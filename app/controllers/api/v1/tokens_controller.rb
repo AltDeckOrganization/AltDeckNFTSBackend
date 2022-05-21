@@ -13,7 +13,7 @@ class Api::V1::TokensController < ApplicationController
     render json: @token, status: :ok
   end 
 
-  # POST /tokens/:id
+  # POST /tokens
   def create
       @token = Token.new(token_params)
       @token.status = :new;
@@ -50,27 +50,13 @@ class Api::V1::TokensController < ApplicationController
     end
   end
 
-
-  # Add new token
-  def add_new_token
-    @token = Token.new(data_params)
-    @token.status = :new;
-    
-    if @token.save
-        render json: @token, status: :created
-    else
-        render json: { errors: @token.errors.full_messages },
-        status: :unprocessable_entity
-    end
-  end
-
   private 
       def token_params
-          params.permit(:name, :date_created, :date_updated, :date_deleted, :blockchain)
+          params.permit(:name, 
+                        :date_created, 
+                        :date_updated, 
+                        :date_deleted, 
+                        :blockchain,
+                        :token_detail)
       end
-
-      def data_params
-        params.permit(:token_detail)
-    end
-  
 end

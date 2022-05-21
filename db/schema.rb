@@ -46,8 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_213953) do
     t.string "candymachine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
     t.text "page_data"
+    t.integer "status"
   end
 
   create_table "launchpad_statistics", force: :cascade do |t|
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_213953) do
     t.datetime "date_deleted", precision: nil
     t.string "blockchain"
     t.integer "votes"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "token_detail"
@@ -83,15 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_213953) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.datetime "vote_date", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "token_id", null: false
-    t.index ["token_id"], name: "index_votes_on_token_id"
-  end
-
   add_foreign_key "categories", "tokens"
   add_foreign_key "launchpad_statistics", "launches"
-  add_foreign_key "votes", "tokens"
 end
