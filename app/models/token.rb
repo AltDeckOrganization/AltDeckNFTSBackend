@@ -1,5 +1,5 @@
 class Token < ApplicationRecord
-  enum status: [:new, :active, :disabled ]
+  enum status: [ :recent, :active, :disabled ]
 
   has_many :category
 

@@ -1,5 +1,5 @@
 class Api::V1::TokensController < ApplicationController
-#   skip_before_action :authenticate_request, only: [:index, :show, :create]
+  skip_before_action :authenticate_request, only: [:index, :show, :create]
 
   # GET /tokens
   def index 
@@ -16,7 +16,7 @@ class Api::V1::TokensController < ApplicationController
   # POST /tokens
   def create
       @token = Token.new(token_params)
-      @token.status = :new;
+      @token.status = :recent;
       if @token.save
           render json: @token, status: :created
       else
@@ -57,6 +57,7 @@ class Api::V1::TokensController < ApplicationController
                         :date_updated, 
                         :date_deleted, 
                         :blockchain,
-                        :token_detail)
+                        :token_detail,
+                        :votes)
       end
 end
