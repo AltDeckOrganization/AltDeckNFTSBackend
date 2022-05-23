@@ -4,7 +4,6 @@ class Token < ApplicationRecord
   has_many :category
 
   validates :name, presence: true
-  validates :date_deleted, presence: true
   validates :blockchain, presence: true
   validates :votes, presence: true
 end

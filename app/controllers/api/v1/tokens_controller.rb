@@ -52,6 +52,6 @@ class Api::V1::TokensController < ApplicationController
 
   private 
       def token_params
-          params.permit(:name, :date_deleted, :blockchain, :token_detail, :votes)
+          params.permit(:name, :blockchain, :token_detail, :votes)
       end
 end
