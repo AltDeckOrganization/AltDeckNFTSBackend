@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_220900) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_23_073043) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -64,8 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_220900) do
 
   create_table "tokens", force: :cascade do |t|
     t.string "name"
-    t.datetime "date_created", precision: nil
-    t.datetime "date_updated", precision: nil
     t.datetime "date_deleted", precision: nil
     t.string "blockchain"
     t.integer "status"
