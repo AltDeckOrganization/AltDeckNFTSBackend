@@ -1,5 +1,5 @@
 class Api::V1::TokensController < ApplicationController
-  skip_before_action :authenticate_request, only: [:index, :show, :create]
+  skip_before_action :authenticate_request, only: [:index, :show, :create, :vote_for_token]
 
   # GET /tokens
   def index 
