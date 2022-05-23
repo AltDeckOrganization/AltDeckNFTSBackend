@@ -7,6 +7,7 @@ class CreateTokens < ActiveRecord::Migration[7.0]
       t.timestamp :date_deleted
       t.string :blockchain
       t.integer :votes
+      t.integer :status
 
       t.timestamps
     end
