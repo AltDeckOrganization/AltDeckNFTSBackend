@@ -55,7 +55,7 @@ class Api::V1::TokensController < ApplicationController
   # VERIFY token
   def recaptcha
     res = HTTP.post("https://www.google.com/recaptcha/api/siteverify", 
-        :data => {'secret' => '6LfTmRIgAAAAAHkpBkZpTWG_3lR4i4ImDdbzBfHR'})
+        :data => {'secret' => ENV['SECRET_KEY']})
     p res.parse
   end
 
