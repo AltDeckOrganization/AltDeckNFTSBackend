@@ -36,5 +36,3 @@
 
 # Ignonre .rbenv.vars
 .rbenv-vars
-
-.env
