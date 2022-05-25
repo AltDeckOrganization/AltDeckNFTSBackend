@@ -42,6 +42,9 @@ gem 'jwt'
 # Use ActiveModel has_secure_password
 gem  'bcrypt'
 
+# http gem 
+gem "http"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
