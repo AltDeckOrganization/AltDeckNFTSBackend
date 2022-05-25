@@ -1,7 +1,7 @@
 class Token < ApplicationRecord
   enum status: [ :recent, :active, :disabled ]
 
-  has_many :category
+  # has_many :category
 
   validates :name, presence: true
   validates :blockchain, presence: true
