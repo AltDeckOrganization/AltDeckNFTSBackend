@@ -1,5 +1,7 @@
+require "http"
+
 class Api::V1::TokensController < ApplicationController
-  skip_before_action :authenticate_request, only: [:index, :show, :create, :vote_for_token]
+  skip_before_action :authenticate_request, only: [:index, :show, :create, :vote_for_token, :recaptcha]
 
   # GET /tokens
   def index 
@@ -48,6 +50,13 @@ class Api::V1::TokensController < ApplicationController
         render json: { errors: @token.errors.full_messages },
         status: :unprocessable_entity
     end
+  end
+
+  # VERIFY token
+  def recaptcha
+    res = HTTP.post("https://www.google.com/recaptcha/api/siteverify", 
+        :data => {'secret' => ENV['SECRET_KEY']})
+    p res.parse
   end
 
   private 
