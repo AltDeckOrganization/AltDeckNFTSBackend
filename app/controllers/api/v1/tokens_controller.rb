@@ -44,6 +44,10 @@ class Api::V1::TokensController < ApplicationController
     @token = Token.find(params[:id]);
     @token.votes += 1;
 
+    if @token.votes > 500
+        @token.status = :todayshot
+    end
+
     if @token.save
         render json: @token, status: 200
     else
