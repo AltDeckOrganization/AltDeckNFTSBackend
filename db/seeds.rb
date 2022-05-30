@@ -62,4 +62,4 @@
 # category2 = Category.create(name: "category 3", token: token2)
 
 # Token
-token = Token.create(name: "Cronos", blockchain: "Cronos", token_detail: '[{"coinSymbol": "CR"}]', votes: 300)
+# token = Token.create(name: "Cronos", blockchain: "Cronos", token_detail: '[{"coinSymbol": "CR"}]', votes: 300)
